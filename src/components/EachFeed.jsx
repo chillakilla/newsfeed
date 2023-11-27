@@ -106,15 +106,6 @@ const StDetailBtn = styled.button`
 function EachFeed({ feed, location }) {
   const navigate = useNavigate();
 
-  const deletBtnHndlr = () => {
-    if (window.confirm('삭제할까요?')) {
-      const feedRef = doc(db, 'feeds', feed.id);
-      deleteDoc(feedRef);
-    } else {
-      return;
-    }
-  };
-
   const feedClickHndlr = () => {
     navigate(`/detail/${feed.id}?lastlocation=${location}`);
   };
@@ -125,8 +116,6 @@ function EachFeed({ feed, location }) {
         <img src={smile} alt="" />
 
         <span>{feed.user}</span>
-
-        <button onClick={deletBtnHndlr}>삭제</button>
       </StWriterDiv>
       <StTitle>{feed.title}</StTitle>
       <br />
